@@ -1,0 +1,580 @@
+{
+	"info": {
+		"_postman_id": "100e5537-5919-4c2f-8b28-a07be70bd9ec",
+		"name": "Beer-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Find All Beers With Name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c82e682c-04b0-4ff9-a6b1-ec780167363b",
+						"exec": [
+							"pm.test(\"Should return correct status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Should return correct response format\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.timestamp).to.be.a('number');",
+							"    pm.expect(jsonData.message).to.eql('Ok');",
+							"    pm.expect(jsonData.data).to.be.a('array');",
+							"});",
+							"",
+							"pm.test(\"Named query should return expected resultset\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(JSON.stringify(jsonData.data)).to.equal(JSON.stringify(",
+							"        [",
+							"            {",
+							"                  \"id\": 24,",
+							"                  \"name\": \"The End Of History\",",
+							"                  \"description\": \"The End of History: The name derives from the famous work of philosopher Francis Fukuyama, this is to beer what democracy is to history. Complexity defined. Floral, grapefruit, caramel and cloves are intensified by boozy heat.\",",
+							"                  \"first_brewed\": \"06/2011\",",
+							"                  \"food_pairings\": [",
+							"                    \"Roasted wood pigeon with black pudding\",",
+							"                    \"Pan seared venison fillet with juniper sauce\",",
+							"                    \"Apricot coconut cake\"",
+							"                  ]",
+							"                },",
+							"                {",
+							"                  \"id\": 46,",
+							"                  \"name\": \"Anarchist Alchemist\",",
+							"                  \"description\": \"About as far as you can push an IPA; Anarchist Alchemist packs in three times the malt and three of our favourite hops. Nelson Sauvin, Amarillo and Centennial bring a range of flavours, touching on tropical fruit, white grape, tangerine, grapefruit, pine, spiced orange... the list goes on!\",",
+							"                  \"first_brewed\": \"03/2012\",",
+							"                  \"food_pairings\": [",
+							"                    \"Blue cheese & onion tart\",",
+							"                    \"Goan goat curry\",",
+							"                    \"Sugar-poached kumquat rice pudding\"",
+							"                  ]",
+							"                },",
+							"                {",
+							"                  \"id\": 61,",
+							"                  \"name\": \"Magic Stone Dog (w/Magic Rock & Stone Brewing Co.)\",",
+							"                  \"description\": \"A session IPA brewed with a diverse grain bill, hopped with Simcoe and Amarillo and fermented with saison yeast, for an incredible level of depth in a low ABV beer. Spicy, fruity, complex, refreshing and dry.\",",
+							"                  \"first_brewed\": \"06/2014\",",
+							"                  \"food_pairings\": [",
+							"                    \"Halibut with caper brown butter\",",
+							"                    \"Creamy gorgonzola and satsuma salad\",",
+							"                    \"Spicy Daal with garlic naan bread\"",
+							"                  ]",
+							"                },",
+							"                {",
+							"                  \"id\": 73,",
+							"                  \"name\": \"Black Eyed King Imp - Vietnamese Coffee Edition\",",
+							"                  \"description\": \"This is the Vietnamese Coffee Edition. At 12.7% ABV, Black Eyed King Imp is a super intense and twistedly complex brew, with intense notes of sweet vanilla, rich espresso, smooth molasses and bitter chocolate barely contained by the whatever container it's in.\",",
+							"                  \"first_brewed\": \"12/2014\",",
+							"                  \"food_pairings\": [",
+							"                    \"Bacon sandwich with brown sauce\",",
+							"                    \"20hr smoked brisket\",",
+							"                    \"Chocolate fudge ice cream\"",
+							"                  ]",
+							"                },",
+							"                {",
+							"                  \"id\": 110,",
+							"                  \"name\": \"Truffle and Chocolate Stout - B-Sides\",",
+							"                  \"description\": \"Pilot Brew - Truffle & Chocolate Stout. Deep, earthy roast notes make this a gastronome's dream.\",",
+							"                  \"first_brewed\": \"03/2015\",",
+							"                  \"food_pairings\": [",
+							"                    \"Mushroom pithivier\",",
+							"                    \"Roast pheasant with savoy cabbage\",",
+							"                    \"Dark chocolate ganache macaroons\"",
+							"                  ]",
+							"                },",
+							"                {",
+							"                  \"id\": 119,",
+							"                  \"name\": \"Zeitgeist\",",
+							"                  \"description\": \"Zeitgeist is an idiosyncratic alternative black lager. Its inspiration is found more than 200 years ago. Zeitgeist takes an age old classic, a forgotten masterpiece, and gives it relevance and an avant-garde edge.\",",
+							"                  \"first_brewed\": \"12/2008\",",
+							"                  \"food_pairings\": [",
+							"                    \"Spicy cajun fried chicken\",",
+							"                    \"Pork dumplings with rich soy sauce\",",
+							"                    \"Cinnamon carrot cake with creamy cheese frosting\"",
+							"                  ]",
+							"                },",
+							"                {",
+							"                  \"id\": 160,",
+							"                  \"name\": \"Restorative Beverage For Invalids And Convalescents\",",
+							"                  \"description\": \"Brewed to 8.5%, light as a mass market Pilsner in colour, fermented to be as dry as a Lambic, but as bitter as any double IPA and loaded with as much hop aroma as we can get into a beer. The fermentables in this beer were Maris Otter Extra Pale along with plenty of sugar as we mashed at a very low temperature to ensure maximum fermentability and attenuation. This beer is fermented within an inch of its life making it dry, sheer and bright. Citra, Amarillo & Centennial were all used in abundance in the kettle and also fired extremely liberally at this beer with our high tech hop cannon.\",",
+							"                  \"first_brewed\": \"02/2015\",",
+							"                  \"food_pairings\": [",
+							"                    \"Habanero spicy chicken wings with ranch sauce\",",
+							"                    \"Jalapeño chilli and chicken quesadillas\",",
+							"                    \"New York style cheesecake\"",
+							"                  ]",
+							"                },",
+							"                {",
+							"                  \"id\": 175,",
+							"                  \"name\": \"San Diego Scotch Ale (w/Ballast Point)\",",
+							"                  \"description\": \"Whisky cask aged with raisins soaked in rum. Warm, chocolatey and boozy with refreshing resinous bitterness and a lingering toasty biscuit background from the malt. Toasted oak comes courtesy of the barrels and spicy, sweet, dark fruit flavours from the rum soaked raisins.\",",
+							"                  \"first_brewed\": \"07/2012\",",
+							"                  \"food_pairings\": [",
+							"                    \"Venison stroganoff\",",
+							"                    \"Chilli dog\",",
+							"                    \"Toffee chocolate cheesecake\"",
+							"                  ]",
+							"                },",
+							"                {",
+							"                  \"id\": 187,",
+							"                  \"name\": \"Lichtenstein Pale Ale\",",
+							"                  \"description\": \"Dry-hopped with some of our hop heroes, bringing incredibly fruity aromas of zesty orange, pithy grapefruit, pungent pine and resin, backed up with spicy, toasty malt flavours of toffee, biscuit, rye bread and toast crust.\",",
+							"                  \"first_brewed\": \"01/2013\",",
+							"                  \"food_pairings\": [",
+							"                    \"Spicy fish tacos\",",
+							"                    \"Bacon mac 'n' cheese\",",
+							"                    \"Pear crumble\"",
+							"                  ]",
+							"                },",
+							"                {",
+							"                  \"id\": 191,",
+							"                  \"name\": \"Interstellar\",",
+							"                  \"description\": \"Interstellar is a Red Rye IPA with spicy rye flavours from the malt and with great all-round spicy, fruity and earthy hop aromas from the use of Willamette and Amarillo.\",",
+							"                  \"first_brewed\": \"11/2013\",",
+							"                  \"food_pairings\": [",
+							"                    \"Oak chip smoked salmon\",",
+							"                    \"Sticky spicy barbecue ribs\",",
+							"                    \"Scottish tablet\"",
+							"                  ]",
+							"                },",
+							"                {",
+							"                  \"id\": 196,",
+							"                  \"name\": \"Catherine's Pony (w/ Beavertown)\",",
+							"                  \"description\": \"An Imperial Smoked Porter with a nose like gooseberries and blueberries, stuffed with coffee, covered in chocolate and toasted on a campfire by the beach, Catherine’s Pony is robust and imposing with a herculean mouthfeel. Rich and smooth with roasted smoky flavours battling for prominence over the assertive bitterness. A satisfying hoppiness rounds off the palate.\",",
+							"                  \"first_brewed\": \"12/2012\",",
+							"                  \"food_pairings\": [",
+							"                    \"Flame grilled steak\",",
+							"                    \"Venison and Winter vegetable stew\",",
+							"                    \"Maple bacon chocolate cupcakes\"",
+							"                  ]",
+							"                },",
+							"                {",
+							"                  \"id\": 209,",
+							"                  \"name\": \"Stereo Wolf Stout - Prototype Challenge\",",
+							"                  \"description\": \"Roasty, dark and complex, Stereo Wolf is a 5.2% ABV Stout brewed with a cacophony of hop-driven fruit and spice. Dark chocolate stalks alongside the resonating bitterness, through to Stereo Wolf’s lingering dry finish. Balancing roasty malt and new world hops at 5.2% ABV is no mean feat, but Stereo Wolf takes it in its stride.\",",
+							"                  \"first_brewed\": \"02/2015\",",
+							"                  \"food_pairings\": [",
+							"                    \"Mississippi style pork ribs\",",
+							"                    \"Chunky mild spice beef stew\",",
+							"                    \"Chocolate chunky cookies\"",
+							"                  ]",
+							"                },",
+							"                {",
+							"                  \"id\": 261,",
+							"                  \"name\": \"Small Batch: Nitro Breakfast Stout\",",
+							"                  \"description\": \"An utterly indulgent, smooth as hell Stout. With opulent flavours of chocolate milkshake, roasty espresso coffee, and mellow vanilla, this beer has a full-bodied and creamy mouthfeel.\",",
+							"                  \"first_brewed\": \"2017\",",
+							"                  \"food_pairings\": [",
+							"                    \"Habanero Pulled Pork\",",
+							"                    \"Choc Chip Cookies,\",",
+							"                    \"Black Pudding Croquettes\"",
+							"                  ]",
+							"                },",
+							"                {",
+							"                  \"id\": 264,",
+							"                  \"name\": \"Small Batch: East Coast Crush\",",
+							"                  \"description\": \"East Coast Crush is a Vermont style pale ale, packaged and served using our custom LIVE beer dispense. A session Vermont IPA, with low background bitterness, loaded with intense juicy mango, pineapple, peach and pine.\",",
+							"                  \"first_brewed\": \"2017\",",
+							"                  \"food_pairings\": [",
+							"                    \"Chickpea and Apricot Tagine\",",
+							"                    \"Pan-fried Lemon Sole\",",
+							"                    \"Lobster Salad\"",
+							"                  ]",
+							"                },",
+							"                {",
+							"                  \"id\": 323,",
+							"                  \"name\": \"Interstate Vienna Lager.\",",
+							"                  \"description\": \"A new 5% ABV Vienna Lager, that features in Fanzine, our new subscription model.\",",
+							"                  \"first_brewed\": \"2018\",",
+							"                  \"food_pairings\": [",
+							"                    \"Grilled chicken and steamed vegetables\",",
+							"                    \"Pork sausages\",",
+							"                    \"Almond biscotti\"",
+							"                  ]",
+							"                }",
+							"        ]",
+							"    ));",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-user",
+						"value": "test@domain.com",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/beers/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"beers",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find All Beers With Name: Missing x-user Header",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "284c7909-150c-4bd9-9ae6-61410c480676",
+						"exec": [
+							"pm.test(\"Should return correct status code\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"Should return correct response format\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.timestamp).to.be.a('number');",
+							"    pm.expect(jsonData.message).to.eql('NOk');",
+							"    pm.expect(jsonData.data).to.equal(undefined);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/beers/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"beers",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find All Beers With Name: Invalid x-user Header Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cc4aaf21-c094-4b9a-8d5c-d1bb1af4482a",
+						"exec": [
+							"pm.test(\"Should return correct status code\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"Should return correct response format\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.timestamp).to.be.a('number');",
+							"    pm.expect(jsonData.message).to.eql('NOk');",
+							"    pm.expect(jsonData.data).to.equal(undefined);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-user",
+						"type": "text",
+						"value": "test.com"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/beers/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"beers",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Attach Invalid Rating To Beer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4157f24f-0b5c-4000-a205-287b0c4d2cfe",
+						"exec": [
+							"pm.test(\"Should return correct status code\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Should return correct response format\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.timestamp).to.be.a('number');",
+							"    pm.expect(jsonData.data).to.equals(undefined);",
+							"    pm.expect(jsonData.message).to.eql('NOk');",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-user",
+						"value": "test@domain.com",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"rating\": 0,\n  \"comments\": [\"Awesome!\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/beers/rate/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"beers",
+						"rate",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Attach Valid Rating To Beer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0274e071-b3d6-4b9a-b277-e5830ef1e0f6",
+						"exec": [
+							"pm.test(\"Should return correct status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Should return correct response format\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.timestamp).to.be.a('number');",
+							"    pm.expect(jsonData.message).to.eql('Ok');",
+							"    pm.expect(jsonData.error).to.equals(undefined);",
+							"    pm.expect(jsonData.data).to.be.a('object');",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-user",
+						"value": "test@domain.com",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"rating\": 1,\n  \"comments\": [\"Awesome!\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/beers/rate/24",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"beers",
+						"rate",
+						"24"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Attach Valid Rating To Beer with Invalid x-user header",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "35408510-76ff-43cd-8a05-68d584d3d0df",
+						"exec": [
+							"pm.test(\"Should return correct status code\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"Should return correct response format\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.timestamp).to.be.a('number');",
+							"    pm.expect(jsonData.message).to.eql('NOk');",
+							"    pm.expect(jsonData.data).to.equal(undefined);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-user",
+						"value": "test@domain",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"rating\": 1,\n  \"comments\": [\"Awesome!\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/beers/rate/24",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"beers",
+						"rate",
+						"24"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Attach Valid Rating To Beer with missing x-user header",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f5f4a40a-2239-4d30-856e-1a93ce0e1765",
+						"exec": [
+							"pm.test(\"Should return correct status code\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"Should return correct response format\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.timestamp).to.be.a('number');",
+							"    pm.expect(jsonData.message).to.eql('NOk');",
+							"    pm.expect(jsonData.data).to.equal(undefined);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"rating\": 1,\n  \"comments\": [\"Awesome!\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/beers/rate/24",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"beers",
+						"rate",
+						"24"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
